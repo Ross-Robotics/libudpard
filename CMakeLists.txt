@@ -12,6 +12,16 @@ cmake_minimum_required(VERSION 3.20)
 project(udpard)
 enable_testing()
 
+add_library(libudpard STATIC
+    "libudpard/udpard.c"
+)
+
+target_include_directories(libudpard
+    PUBLIC
+        "${CMAKE_CURRENT_SOURCE_DIR}/libudpard"
+)
+
+
 # Shared Clang-Format target for all subprojects.
 find_program(clang_format NAMES clang-format)
 if (NOT clang_format)
