@@ -21,7 +21,6 @@ target_include_directories(libudpard
         "${CMAKE_CURRENT_SOURCE_DIR}/libudpard"
 )
 
-
 # Shared Clang-Format target for all subprojects.
 find_program(clang_format NAMES clang-format)
 if (NOT clang_format)
@@ -36,4 +35,6 @@ else ()
     add_custom_target(format COMMAND ${clang_format} -i -fallback-style=none -style=file --verbose ${format_files})
 endif ()
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tests)
+if(UDPARD_BUILD_EXAMPLES)
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/tests)
+endif()
